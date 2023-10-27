@@ -6,10 +6,10 @@ import { TextField } from '@mui/material';
 const RegisterPage = () => {
   const [formData, setFormData] = useState({});
 
-  const handleSubmit = (e) => {
+  const handleSubmitRegister = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:3001/api/endpoint', {
+    fetch('http://localhost:3001/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json', // Nastavenie typu obsahu
@@ -17,7 +17,7 @@ const RegisterPage = () => {
       body: JSON.stringify(formData), // Prevod údajov na JSON a odoslanie
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then((formData) => {
        console.log('====================================');
        console.log("data boli uspesne spracovane, super David!");
        console.log(formData);
@@ -40,7 +40,7 @@ const RegisterPage = () => {
   return (
     <div className='w-[300px] h-[400px] bg-stone-200 p-5 rounded-xl mx-auto'>
       <h1 className='font-bold text-blue-800 text-xl text-center'>Register Form</h1>
-      <form onSubmit={handleSubmit} className='flex flex-col gap-3'>
+      <form onSubmit={handleSubmitRegister} className='flex flex-col gap-3'>
         <TextField id="standard-basic" name="name" label="full name" variant="standard" onChange={handleChange}/>
         <TextField id="standard-basic" name="email" label="email" variant="standard" onChange={handleChange}/>
         <TextField id="standard-basic" name="password" label="password" variant="standard" onChange={handleChange}/>
